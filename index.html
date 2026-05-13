@@ -1,440 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+/>
+
+<title>Tamil & Lavina Wedding Invite</title>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+/>
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Dancing+Script:wght@600&family=Lato:wght@300;400&display=swap');
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Dancing+Script:wght@600&family=Lato:wght@300;400&display=swap');
 
-  .invite-shell {
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    background: #faf8f3;
-    font-family: 'Lato', sans-serif;
-    overflow: hidden;
-    border-radius: 16px;
-    border: 1px solid #d4c9a0;
-    position: relative;
-  }
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-  /* ---- SCREENS ---- */
-  .screen { display: none; flex-direction: column; align-items: center; min-height: 680px; position: relative; overflow: hidden; }
-  .screen.active { display: flex; }
+html,
+body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#faf8f3;
+  font-family:'Lato',sans-serif;
+}
 
-  /* ---- COVER ---- */
-  #s-cover {
-    background: #f7f4ec;
-    justify-content: center;
-    text-align: center;
-    padding: 40px 24px 60px;
-    cursor: pointer;
-  }
-  .cover-verse {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
-    font-style: italic;
-    color: #6b7c3e;
-    line-height: 1.7;
-    margin-bottom: 28px;
-    max-width: 280px;
-  }
-  .cover-verse span { display: block; font-style: normal; font-weight: 500; margin-top: 6px; font-size: 13px; }
-  .monogram-wrap {
-    width: 110px; height: 110px;
-    border-radius: 50%;
-    border: 1.5px solid #8a9e4a;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 28px;
-    position: relative;
-  }
-  .monogram-inner {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
-    color: #6b7c3e;
-    font-weight: 500;
-    letter-spacing: -4px;
-    line-height: 1;
-  }
-  .mono-leaf { position: absolute; font-size: 22px; color: #8a9e4a; }
-  .mono-leaf.tl { top: 8px; left: 8px; transform: rotate(-30deg); }
-  .mono-leaf.tr { top: 8px; right: 8px; transform: rotate(30deg); }
-  .names-big {
-    font-family: 'Dancing Script', cursive;
-    font-size: 44px;
-    color: #4a5e20;
-    line-height: 1.1;
-    margin-bottom: 8px;
-  }
-  .and-sym { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: #8a9e4a; display: block; margin: 2px 0; }
-  .cover-sub {
-    font-family: 'Lato', sans-serif;
-    font-size: 11px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: #8a9e4a;
-    margin-top: 10px;
-    margin-bottom: 32px;
-  }
-  .swipe-hint {
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    animation: bounce 1.8s infinite;
-    color: #8a9e4a;
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .swipe-arrow { font-size: 22px; line-height: 1; }
-  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+/* FULL SCREEN */
 
-  /* ---- FLORAL SVG ---- */
-  .floral-bottom { width: 100%; margin-top: auto; }
+.invite-shell{
+  width:100vw;
+  height:100dvh;
+  max-width:100vw;
 
-  /* ---- INVITE SCREEN ---- */
-  #s-invite { padding: 32px 24px 40px; text-align: center; background: #faf8f3; }
-  .invite-heading {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 13px; color: #8a9e4a; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px;
-  }
-  .invite-para {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic; font-size: 15px; color: #5a5a45; line-height: 1.8; margin-bottom: 20px;
-  }
-  .bride-groom {
-    font-family: 'Dancing Script', cursive;
-    font-size: 46px; color: #4a5e20; line-height: 1.1; margin: 4px 0;
-  }
-  .heart-and { font-size: 20px; color: #8a9e4a; margin: 4px 0; display: block; }
-  .invite-footer { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #6b6b50; line-height: 1.8; margin-top: 16px; max-width: 300px; margin-left: auto; margin-right: auto; }
-  .divider { width: 80px; height: 1px; background: #c5b97a; margin: 16px auto; }
-  .nav-btn-row { display: flex; gap: 12px; justify-content: center; margin-top: 28px; }
-  .nav-btn {
-    background: transparent; border: 1px solid #8a9e4a; color: #4a5e20;
-    font-family: 'Lato', sans-serif; font-size: 12px; letter-spacing: 1.5px;
-    text-transform: uppercase; padding: 10px 20px; border-radius: 24px;
-    cursor: pointer; transition: background 0.2s, color 0.2s;
-  }
-  .nav-btn:hover { background: #8a9e4a; color: #fff; }
-  .nav-btn.primary { background: #6b7c3e; color: #fff; border-color: #6b7c3e; }
-  .nav-btn.primary:hover { background: #4a5e20; }
+  background:#faf8f3;
 
-  /* ---- EVENTS SCREEN ---- */
-  #s-events { padding: 28px 20px 36px; background: #faf8f3; }
-  .section-title {
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-    color: #8a9e4a; margin-bottom: 20px;
-  }
-  .event-card {
-    background: #fff;
-    border: 1px solid #d9d0a8;
-    border-radius: 12px;
-    padding: 18px 20px;
-    margin-bottom: 14px;
-    display: flex; gap: 16px; align-items: flex-start;
-    transition: box-shadow 0.2s;
-  }
-  .event-card:hover { box-shadow: 0 2px 12px rgba(106,124,62,0.12); }
-  .event-icon {
-    width: 44px; height: 44px; min-width: 44px;
-    border-radius: 50%; background: #eef3dc;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-  }
-  .event-info { flex: 1; }
-  .event-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 500; color: #3d4f18; margin-bottom: 3px; }
-  .event-date { font-size: 12px; color: #6b7c3e; font-weight: 400; letter-spacing: 0.5px; margin-bottom: 2px; }
-  .event-venue { font-size: 12px; color: #7a7a60; line-height: 1.5; }
-  .event-time-badge {
-    background: #eef3dc; color: #4a5e20;
-    font-size: 11px; font-weight: 400; letter-spacing: 1px;
-    padding: 3px 10px; border-radius: 20px;
-    display: inline-block; margin-top: 6px;
-  }
+  overflow:hidden;
 
-  /* ---- COUNTDOWN SCREEN ---- */
-  #s-countdown { padding: 32px 24px 40px; background: #faf8f3; text-align: center; }
-  .cd-label { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #8a9e4a; margin-bottom: 24px; }
-  .cd-names { font-family: 'Dancing Script', cursive; font-size: 38px; color: #4a5e20; margin-bottom: 6px; }
-  .cd-date-text { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: #7a7a60; margin-bottom: 28px; font-style: italic; }
-  .cd-grid { display: flex; gap: 12px; justify-content: center; margin-bottom: 28px; }
-  .cd-box {
-    background: #fff; border: 1px solid #d9d0a8; border-radius: 12px;
-    width: 72px; padding: 14px 8px 10px;
-    display: flex; flex-direction: column; align-items: center; gap: 4px;
-  }
-  .cd-num { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 500; color: #3d4f18; line-height: 1; }
-  .cd-unit { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #8a9e4a; }
-  .cd-message { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: #6b6b50; line-height: 1.8; max-width: 280px; margin: 0 auto 24px; }
+  position:fixed;
+  inset:0;
 
-  /* ---- RSVP SCREEN ---- */
-  #s-rsvp { padding: 32px 24px 40px; background: #faf8f3; text-align: center; }
-  .rsvp-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500; color: #3d4f18; margin-bottom: 6px; }
-  .rsvp-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 14px; color: #8a9e4a; margin-bottom: 24px; }
-  .rsvp-contact-card {
-    background: #fff; border: 1px solid #d9d0a8; border-radius: 12px;
-    padding: 20px; margin-bottom: 16px; text-align: left;
-  }
-  .rsvp-contact-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: #8a9e4a; margin-bottom: 6px; }
-  .rsvp-contact-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #3d4f18; margin-bottom: 2px; }
-  .rsvp-phone { font-size: 14px; color: #6b7c3e; font-weight: 400; }
-  .wa-btn {
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-    background: #4a5e20; color: #fff;
-    font-family: 'Lato', sans-serif; font-size: 13px; letter-spacing: 1px;
-    text-transform: uppercase; padding: 14px 28px; border-radius: 32px;
-    border: none; cursor: pointer; width: 100%; margin-top: 20px;
-    transition: background 0.2s;
-    text-decoration: none;
-  }
-  .wa-btn:hover { background: #3d4f18; }
-  .rsvp-families { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: #7a7a60; margin-top: 20px; line-height: 2; }
-  .rsvp-families strong { color: #4a5e20; font-weight: 500; }
+  border:none;
+  border-radius:0;
 
-  /* ---- BOTTOM NAV ---- */
-  .bottom-nav {
-    display: flex; justify-content: space-around; align-items: center;
-    padding: 10px 8px 12px;
-    border-top: 1px solid #d9d0a8;
-    background: #f2eedf;
-  }
-  .bnav-item {
-    display: flex; flex-direction: column; align-items: center; gap: 3px;
-    font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
-    color: #9a9a78; cursor: pointer; padding: 4px 8px; border-radius: 8px;
-    transition: color 0.2s, background 0.2s; border: none; background: transparent; font-family: 'Lato', sans-serif;
-  }
-  .bnav-item i { font-size: 20px; }
-  .bnav-item.active { color: #4a5e20; }
-  .bnav-item.active i { color: #4a5e20; }
+  display:flex;
+  flex-direction:column;
 
-  /* ---- SWIPE TRANSITIONS ---- */
-  .screen { animation: none; }
-  .slide-in-right { animation: slideInRight 0.35s ease; }
-  .slide-in-left { animation: slideInLeft 0.35s ease; }
-  @keyframes slideInRight { from { opacity:0; transform: translateX(40px); } to { opacity:1; transform: translateX(0); } }
-  @keyframes slideInLeft { from { opacity:0; transform: translateX(-40px); } to { opacity:1; transform: translateX(0); } }
+  padding-bottom:78px;
+}
 
-  /* ---- TOUCH SWIPE ---- */
-  .swipeable { touch-action: pan-y; user-select: none; }
+/* ---- SCREENS ---- */
+
+.screen{
+  display:none;
+  flex-direction:column;
+  align-items:center;
+
+  width:100%;
+  height:calc(100dvh - 78px);
+
+  overflow-y:auto;
+  overflow-x:hidden;
+
+  position:relative;
+
+  padding-top:env(safe-area-inset-top);
+  padding-bottom:20px;
+
+  animation:none;
+}
+
+.screen.active{
+  display:flex;
+}
+
+/* ---- COVER ---- */
+
+#s-cover{
+  background:#f7f4ec;
+  justify-content:center;
+  text-align:center;
+  padding:40px 24px 60px;
+  cursor:pointer;
+}
+
+.cover-verse{
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;
+  font-style:italic;
+  color:#6b7c3e;
+  line-height:1.7;
+  margin-bottom:28px;
+  max-width:280px;
+}
+
+.cover-verse span{
+  display:block;
+  font-style:normal;
+  font-weight:500;
+  margin-top:6px;
+  font-size:13px;
+}
+
+.monogram-wrap{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  border:1.5px solid #8a9e4a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 28px;
+  position:relative;
+}
+
+.monogram-inner{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;
+  color:#6b7c3e;
+  font-weight:500;
+  letter-spacing:-4px;
+  line-height:1;
+}
+
+.mono-leaf{
+  position:absolute;
+  font-size:22px;
+}
+
+.mono-leaf.tl{
+  top:8px;
+  left:8px;
+  transform:rotate(-30deg);
+}
+
+.mono-leaf.tr{
+  top:8px;
+  right:8px;
+  transform:rotate(30deg);
+}
+
+.names-big{
+  font-family:'Dancing Script',cursive;
+  font-size:44px;
+  color:#4a5e20;
+  line-height:1.1;
+  margin-bottom:8px;
+}
+
+.and-sym{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;
+  color:#8a9e4a;
+  display:block;
+  margin:2px 0;
+}
+
+.cover-sub{
+  font-size:11px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:#8a9e4a;
+  margin-top:10px;
+  margin-bottom:32px;
+}
+
+.swipe-hint{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  animation:bounce 1.8s infinite;
+  color:#8a9e4a;
+  font-size:11px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.swipe-arrow{
+  font-size:22px;
+}
+
+@keyframes bounce{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-6px);
+  }
+}
+
+/* ---- COMMON ---- */
+
+.divider{
+  width:80px;
+  height:1px;
+  background:#c5b97a;
+  margin:16px auto;
+}
+
+.nav-btn-row{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+
+.nav-btn{
+  background:transparent;
+  border:1px solid #8a9e4a;
+  color:#4a5e20;
+
+  font-size:12px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+
+  padding:10px 20px;
+  border-radius:24px;
+
+  cursor:pointer;
+}
+
+.nav-btn.primary{
+  background:#6b7c3e;
+  color:#fff;
+}
+
+/* ---- INVITE ---- */
+
+#s-invite{
+  padding:32px 24px 40px;
+  text-align:center;
+}
+
+.invite-heading{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;
+  color:#8a9e4a;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.invite-para{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:15px;
+  color:#5a5a45;
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+.bride-groom{
+  font-family:'Dancing Script',cursive;
+  font-size:46px;
+  color:#4a5e20;
+}
+
+.heart-and{
+  font-size:20px;
+  color:#8a9e4a;
+  margin:4px 0;
+  display:block;
+}
+
+.invite-footer{
+  font-family:'Cormorant Garamond',serif;
+  font-size:14px;
+  color:#6b6b50;
+  line-height:1.8;
+  margin-top:16px;
+}
+
+/* ---- EVENTS ---- */
+
+#s-events{
+  padding:28px 20px 36px;
+}
+
+.section-title{
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#8a9e4a;
+  margin-bottom:20px;
+}
+
+.event-card{
+  background:#fff;
+  border:1px solid #d9d0a8;
+  border-radius:12px;
+  padding:18px 20px;
+  margin-bottom:14px;
+
+  display:flex;
+  gap:16px;
+}
+
+.event-icon{
+  width:44px;
+  height:44px;
+  min-width:44px;
+
+  border-radius:50%;
+  background:#eef3dc;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:20px;
+}
+
+.event-info{
+  flex:1;
+}
+
+.event-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;
+  color:#3d4f18;
+  margin-bottom:3px;
+}
+
+.event-date{
+  font-size:12px;
+  color:#6b7c3e;
+}
+
+.event-venue{
+  font-size:12px;
+  color:#7a7a60;
+  line-height:1.5;
+}
+
+.event-time-badge{
+  background:#eef3dc;
+  color:#4a5e20;
+
+  font-size:11px;
+  letter-spacing:1px;
+
+  padding:3px 10px;
+  border-radius:20px;
+
+  display:inline-block;
+  margin-top:6px;
+}
+
+/* ---- COUNTDOWN ---- */
+
+#s-countdown{
+  padding:32px 24px 40px;
+  text-align:center;
+}
+
+.cd-label{
+  font-family:'Cormorant Garamond',serif;
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#8a9e4a;
+  margin-bottom:24px;
+}
+
+.cd-names{
+  font-family:'Dancing Script',cursive;
+  font-size:38px;
+  color:#4a5e20;
+  margin-bottom:6px;
+}
+
+.cd-date-text{
+  font-family:'Cormorant Garamond',serif;
+  font-size:15px;
+  color:#7a7a60;
+  margin-bottom:28px;
+  font-style:italic;
+}
+
+.cd-grid{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-bottom:28px;
+}
+
+.cd-box{
+  background:#fff;
+  border:1px solid #d9d0a8;
+  border-radius:12px;
+
+  width:72px;
+  padding:14px 8px 10px;
+}
+
+.cd-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;
+  color:#3d4f18;
+}
+
+.cd-unit{
+  font-size:10px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  color:#8a9e4a;
+}
+
+/* ---- RSVP ---- */
+
+#s-rsvp{
+  padding:32px 24px 40px;
+  text-align:center;
+}
+
+.rsvp-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;
+  color:#3d4f18;
+}
+
+.rsvp-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:14px;
+  color:#8a9e4a;
+  margin-bottom:24px;
+}
+
+.rsvp-contact-card{
+  background:#fff;
+  border:1px solid #d9d0a8;
+  border-radius:12px;
+
+  padding:20px;
+  margin-bottom:16px;
+
+  text-align:left;
+}
+
+.rsvp-contact-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:18px;
+  color:#3d4f18;
+}
+
+.rsvp-phone{
+  font-size:14px;
+  color:#6b7c3e;
+  margin-top:6px;
+}
+
+.wa-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#4a5e20;
+  color:#fff;
+
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+
+  padding:14px 28px;
+  border-radius:32px;
+
+  width:100%;
+  margin-top:20px;
+
+  text-decoration:none;
+}
+
+/* ---- FIXED BOTTOM NAV ---- */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+
+  width:100%;
+
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+
+  padding:
+    10px
+    8px
+    calc(12px + env(safe-area-inset-bottom));
+
+  border-top:1px solid #d9d0a8;
+
+  background:#f2eedf;
+
+  z-index:9999;
+}
+
+.bnav-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:3px;
+
+  font-size:9px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+
+  color:#9a9a78;
+
+  cursor:pointer;
+
+  padding:4px 8px;
+
+  border:none;
+  background:transparent;
+}
+
+.bnav-item i{
+  font-size:20px;
+}
+
+.bnav-item.active{
+  color:#4a5e20;
+}
+
+/* ---- ANIMATION ---- */
+
+.slide-in-right{
+  animation:slideInRight .35s ease;
+}
+
+.slide-in-left{
+  animation:slideInLeft .35s ease;
+}
+
+@keyframes slideInRight{
+  from{
+    opacity:0;
+    transform:translateX(40px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
+@keyframes slideInLeft{
+  from{
+    opacity:0;
+    transform:translateX(-40px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+
 </style>
+</head>
 
-<h2 class="sr-only">Tamil & Lavina Wedding E-Invite — 26 June 2026, Chennai</h2>
+<body>
 
-<div class="invite-shell swipeable" id="invite-shell">
+<div class="invite-shell" id="invite-shell">
 
-  <!-- SCREEN 0: COVER -->
+  <!-- COVER -->
+
   <div class="screen active" id="s-cover" onclick="goTo(1,'right')">
+
     <div class="cover-verse">
-      "The Lord has done great things for us,<br>and we are filled with joy."
+      "The Lord has done great things for us,<br>
+      and we are filled with joy."
       <span>— Psalms 126:3</span>
     </div>
+
     <div class="monogram-wrap">
       <div class="monogram-inner">T/L</div>
       <span class="mono-leaf tl">🌿</span>
       <span class="mono-leaf tr">🌿</span>
     </div>
-    <div class="names-big">Tamil<span class="and-sym">♡</span>Lavina</div>
-    <div class="cover-sub">26 · June · 2026 · Chennai</div>
+
+    <div class="names-big">
+      Tamil
+      <span class="and-sym">♡</span>
+      Lavina
+    </div>
+
+    <div class="cover-sub">
+      26 · June · 2026 · Chennai
+    </div>
+
     <div class="swipe-hint">
       <div class="swipe-arrow">↑</div>
       Tap to open
     </div>
-    <svg class="floral-bottom" viewBox="0 0 420 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g opacity="0.55" stroke="#6b7c3e" stroke-width="1.2" fill="none">
-        <path d="M10 90 Q30 60 50 75 Q70 55 90 70"/>
-        <circle cx="52" cy="73" r="4" fill="#8a9e4a"/>
-        <circle cx="90" cy="68" r="5" fill="#8a9e4a"/>
-        <path d="M20 90 Q40 65 60 80"/>
-        <path d="M330 90 Q350 60 370 75 Q390 55 410 70"/>
-        <circle cx="372" cy="73" r="4" fill="#8a9e4a"/>
-        <circle cx="410" cy="68" r="5" fill="#8a9e4a"/>
-        <path d="M340 90 Q360 65 380 80"/>
-        <path d="M160 90 Q180 70 200 80 Q220 65 240 78 Q260 70 280 85"/>
-        <circle cx="200" cy="78" r="3" fill="#8a9e4a"/>
-        <circle cx="240" cy="76" r="3.5" fill="#8a9e4a"/>
-      </g>
-    </svg>
+
   </div>
 
-  <!-- SCREEN 1: INVITE TEXT -->
+  <!-- INVITE -->
+
   <div class="screen" id="s-invite">
-    <div class="invite-heading">With joy, we invite you</div>
+
+    <div class="invite-heading">
+      With joy, we invite you
+    </div>
+
     <div class="divider"></div>
-    <p class="invite-para">Through God's abundant grace and with<br>hearts full of love, We,</p>
+
+    <p class="invite-para">
+      Through God's abundant grace and with hearts full of love, We,
+    </p>
+
     <div class="bride-groom">Tamil</div>
+
     <span class="heart-and">♡</span>
+
     <div class="bride-groom">Lavina</div>
-    <p class="invite-para" style="margin-top:16px;">Unite in marriage and step into a lifetime together.<br>We would love to have you beside us<br>to celebrate this special day.</p>
+
+    <p class="invite-para" style="margin-top:16px;">
+      Unite in marriage and step into a lifetime together.
+      We would love to have you beside us to celebrate this special day.
+    </p>
+
     <div class="divider"></div>
+
     <div class="invite-footer">
-      With love, today and always<br>
-      <strong style="color:#4a5e20;">David ❤️ Latha · Peter & Seegan</strong>
+      With love, today and always
+      <br>
+      <strong style="color:#4a5e20;">
+        David ❤️ Latha · Peter & Seegan
+      </strong>
     </div>
-    <div class="nav-btn-row">
-      <button class="nav-btn" onclick="goTo(0,'left')">← Back</button>
-      <button class="nav-btn primary" onclick="goTo(2,'right')">View Events →</button>
-    </div>
-    <svg class="floral-bottom" viewBox="0 0 420 70" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:auto;">
-      <g opacity="0.4" stroke="#6b7c3e" stroke-width="1" fill="none">
-        <path d="M0 70 Q60 40 120 60 Q180 35 240 55 Q300 35 360 55 Q390 45 420 60"/>
-        <circle cx="120" cy="58" r="3.5" fill="#8a9e4a"/>
-        <circle cx="240" cy="53" r="3" fill="#8a9e4a"/>
-        <circle cx="360" cy="53" r="3.5" fill="#8a9e4a"/>
-      </g>
-    </svg>
+
   </div>
 
-  <!-- SCREEN 2: EVENTS -->
+  <!-- EVENTS -->
+
   <div class="screen" id="s-events">
-    <div class="section-title" style="margin-bottom:0; padding: 20px 0 4px;">wedding events</div>
+
+    <div class="section-title">
+      wedding events
+    </div>
+
     <div class="divider"></div>
 
-    <div style="width:100%; padding: 0 20px 8px;">
+    <div style="width:100%;padding:0 20px;">
+
       <div class="event-card">
+
         <div class="event-icon">⛪</div>
+
         <div class="event-info">
-          <div class="event-name">Wedding Ceremony</div>
-          <div class="event-date">Friday, 26th June 2026</div>
-          <div class="event-venue">CSI Immanuel Church<br>S. Kolathur, Chennai<br><span style="font-size:11px;color:#9a9a78;">Opp. to PR Palace</span></div>
-          <span class="event-time-badge">9:30 AM onwards</span>
+
+          <div class="event-name">
+            Wedding Ceremony
+          </div>
+
+          <div class="event-date">
+            Friday, 26th June 2026
+          </div>
+
+          <div class="event-venue">
+            CSI Immanuel Church
+            <br>
+            S. Kolathur, Chennai
+          </div>
+
+          <span class="event-time-badge">
+            9:30 AM onwards
+          </span>
+
         </div>
       </div>
 
       <div class="event-card">
+
         <div class="event-icon">🥂</div>
+
         <div class="event-info">
-          <div class="event-name">Reception</div>
-          <div class="event-date">Friday, 26th June 2026</div>
-          <div class="event-venue">PR Palace<br>S. Kolathur, Chennai</div>
-          <span class="event-time-badge">11:30 AM onwards</span>
+
+          <div class="event-name">
+            Reception
+          </div>
+
+          <div class="event-date">
+            Friday, 26th June 2026
+          </div>
+
+          <div class="event-venue">
+            PR Palace
+            <br>
+            S. Kolathur, Chennai
+          </div>
+
+          <span class="event-time-badge">
+            11:30 AM onwards
+          </span>
+
         </div>
       </div>
+
     </div>
 
-    <div class="nav-btn-row" style="padding-bottom:8px;">
-      <button class="nav-btn" onclick="goTo(1,'left')">← Invite</button>
-      <button class="nav-btn primary" onclick="goTo(3,'right')">Countdown →</button>
-    </div>
   </div>
 
-  <!-- SCREEN 3: COUNTDOWN -->
+  <!-- COUNTDOWN -->
+
   <div class="screen" id="s-countdown">
-    <div class="cd-label">counting down to</div>
-    <div class="cd-names">Tamil & Lavina</div>
-    <div class="cd-date-text">Friday, 26th June 2026 · Chennai</div>
+
+    <div class="cd-label">
+      counting down to
+    </div>
+
+    <div class="cd-names">
+      Tamil & Lavina
+    </div>
+
+    <div class="cd-date-text">
+      Friday, 26th June 2026 · Chennai
+    </div>
+
     <div class="cd-grid">
-      <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-unit">Days</div></div>
-      <div class="cd-box"><div class="cd-num" id="cd-hrs">--</div><div class="cd-unit">Hours</div></div>
-      <div class="cd-box"><div class="cd-num" id="cd-min">--</div><div class="cd-unit">Mins</div></div>
-      <div class="cd-box"><div class="cd-num" id="cd-sec">--</div><div class="cd-unit">Secs</div></div>
+
+      <div class="cd-box">
+        <div class="cd-num" id="cd-days">--</div>
+        <div class="cd-unit">Days</div>
+      </div>
+
+      <div class="cd-box">
+        <div class="cd-num" id="cd-hrs">--</div>
+        <div class="cd-unit">Hours</div>
+      </div>
+
+      <div class="cd-box">
+        <div class="cd-num" id="cd-min">--</div>
+        <div class="cd-unit">Mins</div>
+      </div>
+
+      <div class="cd-box">
+        <div class="cd-num" id="cd-sec">--</div>
+        <div class="cd-unit">Secs</div>
+      </div>
+
     </div>
-    <p class="cd-message">"Our families are filled with joy that you can join us in celebrating what we hope will be one of the happiest days of our lives."</p>
-    <div class="nav-btn-row">
-      <button class="nav-btn" onclick="goTo(2,'left')">← Events</button>
-      <button class="nav-btn primary" onclick="goTo(4,'right')">CONTACT →</button>
-    </div>
-    <svg class="floral-bottom" viewBox="0 0 420 60" fill="none" style="margin-top:auto;">
-      <g opacity="0.35" stroke="#6b7c3e" stroke-width="1" fill="none">
-        <path d="M0 60 Q80 30 160 50 Q240 25 320 48 Q370 35 420 50"/>
-        <circle cx="160" cy="48" r="3" fill="#8a9e4a"/>
-        <circle cx="320" cy="46" r="3" fill="#8a9e4a"/>
-      </g>
-    </svg>
+
   </div>
 
-  <!-- SCREEN 4: RSVP -->
+  <!-- RSVP -->
+
   <div class="screen" id="s-rsvp">
-    <div class="rsvp-title">Join Us</div>
-    <div class="rsvp-sub">We'd love to celebrate with you!</div>
+
+    <div class="rsvp-title">
+      Join Us
+    </div>
+
+    <div class="rsvp-sub">
+      We'd love to celebrate with you!
+    </div>
+
     <div class="divider"></div>
 
     <div class="rsvp-contact-card">
-      <div class="rsvp-contact-label">Contact for</div>
-      <div class="rsvp-contact-name">Tamil & Lavina's Family</div>
-      <div class="rsvp-phone">📞 86829 02815</div>
+
+      <div class="rsvp-contact-name">
+        Tamil & Lavina's Family
+      </div>
+
+      <div class="rsvp-phone">
+        📞 86829 02815
+      </div>
+
     </div>
 
-    <a class="wa-btn" href="https://wa.me/918682902815?text=Hi!%20I%20would%20love%20to%20join%20Tamil%20%26%20Lavina's%20wedding%20on%2026th%20June%202026%20%F0%9F%8C%BF">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <a
+      class="wa-btn"
+      href="https://wa.me/918682902815"
+    >
       CONTACT US on WhatsApp
     </a>
 
-    <div class="rsvp-families">
-      With love, today and always<br>
-      <strong>David ❤️ Latha</strong> · <strong>Peter & Seegan</strong>
-    </div>
-    <div class="nav-btn-row">
-      <button class="nav-btn" onclick="goTo(3,'left')">← Countdown</button>
-      <button class="nav-btn" onclick="goTo(0,'left')">🌿 Home</button>
-    </div>
   </div>
 
-  <!-- BOTTOM NAV -->
+  <!-- NAV -->
+
   <div class="bottom-nav">
-    <button class="bnav-item active" id="bn-0" onclick="goTo(0,'left')"><i class="ti ti-home" aria-hidden="true"></i>Home</button>
-    <button class="bnav-item" id="bn-1" onclick="goTo(1,'right')"><i class="ti ti-heart" aria-hidden="true"></i>Invite</button>
-    <button class="bnav-item" id="bn-2" onclick="goTo(2,'right')"><i class="ti ti-calendar-event" aria-hidden="true"></i>Events</button>
-    <button class="bnav-item" id="bn-3" onclick="goTo(3,'right')"><i class="ti ti-clock" aria-hidden="true"></i>Timer</button>
-    <button class="bnav-item" id="bn-4" onclick="goTo(4,'right')"><i class="ti ti-message-circle" aria-hidden="true"></i>CONTACT</button>
+
+    <button class="bnav-item active" onclick="goTo(0,'left')">
+      <i class="ti ti-home"></i>
+      Home
+    </button>
+
+    <button class="bnav-item" onclick="goTo(1,'right')">
+      <i class="ti ti-heart"></i>
+      Invite
+    </button>
+
+    <button class="bnav-item" onclick="goTo(2,'right')">
+      <i class="ti ti-calendar-event"></i>
+      Events
+    </button>
+
+    <button class="bnav-item" onclick="goTo(3,'right')">
+      <i class="ti ti-clock"></i>
+      Timer
+    </button>
+
+    <button class="bnav-item" onclick="goTo(4,'right')">
+      <i class="ti ti-message-circle"></i>
+      Contact
+    </button>
+
   </div>
+
 </div>
 
 <script>
-  let current = 0;
 
-  function goTo(n, dir) {
-    const screens = document.querySelectorAll('.screen');
-    screens[current].classList.remove('active');
-    screens[n].classList.remove('active');
-    screens[n].classList.add('active');
-    screens[n].classList.add(dir === 'right' ? 'slide-in-right' : 'slide-in-left');
-    setTimeout(() => screens[n].classList.remove('slide-in-right', 'slide-in-left'), 400);
-    current = n;
-    document.querySelectorAll('.bnav-item').forEach((b,i) => b.classList.toggle('active', i===n));
-  }
+let current = 0;
 
-  // COUNTDOWN
-  function updateCountdown() {
-    const target = new Date('2026-06-26T09:30:00+05:30');
-    const now = new Date();
-    let diff = target - now;
-    if (diff < 0) {
-      document.getElementById('cd-days').textContent = '0';
-      document.getElementById('cd-hrs').textContent = '0';
-      document.getElementById('cd-min').textContent = '0';
-      document.getElementById('cd-sec').textContent = '0';
-      return;
-    }
-    const days = Math.floor(diff / 86400000);
-    diff -= days * 86400000;
-    const hrs = Math.floor(diff / 3600000);
-    diff -= hrs * 3600000;
-    const min = Math.floor(diff / 60000);
-    diff -= min * 60000;
-    const sec = Math.floor(diff / 1000);
-    document.getElementById('cd-days').textContent = days;
-    document.getElementById('cd-hrs').textContent = String(hrs).padStart(2,'0');
-    document.getElementById('cd-min').textContent = String(min).padStart(2,'0');
-    document.getElementById('cd-sec').textContent = String(sec).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+function goTo(n, dir){
 
-  // TOUCH SWIPE
-  let touchStartX = 0, touchStartY = 0;
-  const shell = document.getElementById('invite-shell');
-  shell.addEventListener('touchstart', e => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-  }, { passive: true });
-  shell.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    const dy = e.changedTouches[0].clientY - touchStartY;
-    if (Math.abs(dx) < Math.abs(dy) && Math.abs(dy) > 40) {
-      if (dy < 0 && current < 4) goTo(current + 1, 'right');
-      if (dy > 0 && current > 0) goTo(current - 1, 'left');
-    } else if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
-      if (dx < 0 && current < 4) goTo(current + 1, 'right');
-      if (dx > 0 && current > 0) goTo(current - 1, 'left');
-    }
-  }, { passive: true });
+  const screens =
+    document.querySelectorAll('.screen');
+
+  screens[current].classList.remove('active');
+
+  screens[n].classList.add('active');
+
+  screens[n].classList.add(
+    dir === 'right'
+      ? 'slide-in-right'
+      : 'slide-in-left'
+  );
+
+  setTimeout(() => {
+
+    screens[n].classList.remove(
+      'slide-in-right',
+      'slide-in-left'
+    );
+
+  }, 400);
+
+  current = n;
+
+  document
+    .querySelectorAll('.bnav-item')
+    .forEach((b, i) => {
+
+      b.classList.toggle(
+        'active',
+        i === n
+      );
+
+    });
+}
+
+/* COUNTDOWN */
+
+function updateCountdown(){
+
+  const target =
+    new Date('2026-06-26T09:30:00+05:30');
+
+  const now = new Date();
+
+  let diff = target - now;
+
+  if(diff < 0) return;
+
+  const days =
+    Math.floor(diff / 86400000);
+
+  diff -= days * 86400000;
+
+  const hrs =
+    Math.floor(diff / 3600000);
+
+  diff -= hrs * 3600000;
+
+  const min =
+    Math.floor(diff / 60000);
+
+  diff -= min * 60000;
+
+  const sec =
+    Math.floor(diff / 1000);
+
+  document.getElementById('cd-days').textContent = days;
+
+  document.getElementById('cd-hrs').textContent =
+    String(hrs).padStart(2,'0');
+
+  document.getElementById('cd-min').textContent =
+    String(min).padStart(2,'0');
+
+  document.getElementById('cd-sec').textContent =
+    String(sec).padStart(2,'0');
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
 </script>
+
+</body>
+</html>
