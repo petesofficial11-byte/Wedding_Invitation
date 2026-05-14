@@ -58,108 +58,127 @@
     }
     .screen.active { display: flex; }
 
-    /* ─── COVER ─── */
+    /* ═══════════════════════════
+       COVER
+    ═══════════════════════════ */
     #s-cover {
       justify-content: center;
       text-align: center;
       background: linear-gradient(160deg, var(--cream2) 0%, #EEF2F8 60%, var(--cream) 100%);
-      padding: 40px 24px 60px;
+      padding: 28px 28px 48px;
       cursor: pointer;
     }
 
-    .cover-verse {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16px;
-      font-style: italic;
-      color: var(--slate);
-      line-height: 1.9;
-      margin-bottom: 28px;
+    /* Verse — top, no box */
+    .cover-verse-wrap {
+      margin: 0 auto 18px;
       max-width: 300px;
       text-align: center;
     }
-    .cover-verse span {
+    .cover-verse-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--slate);
+      line-height: 1.3;
+      letter-spacing: .3px;
+    }
+    .cover-verse-ref {
       display: block;
-      margin-top: 8px;
-      font-size: 12px;
-      letter-spacing: 1.5px;
+      margin-top: 10px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-style: normal;
+      letter-spacing: 2px;
       color: var(--gold);
+      text-transform: uppercase;
     }
 
+    /* Monogram */
     .monogram-wrap {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 28px;
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      background: radial-gradient(circle, var(--cream2) 55%, #dce6f0 100%);
-      border: 2px solid var(--gold);
-      box-shadow:
-        0 0 0 6px var(--cream),
-        0 0 0 8px var(--gold),
-        0 6px 28px rgba(47, 74, 109, 0.18);
+      margin: 0 auto 20px;
+      width: 220px;
+      height: 220px;
     }
     .monogram-decor {
       position: absolute;
-      width: 180px;
+      width: 100%;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      opacity: 0.9;
       pointer-events: none;
     }
     .monogram-inner {
       font-family: 'Great Vibes', cursive;
-      font-size: 64px;
+      font-size: 58px;
       color: var(--navy);
-      text-shadow: 1px 2px 10px rgba(212, 175, 55, 0.3);
+      text-shadow: 1px 2px 10px rgba(212, 175, 55, 0.35);
       position: relative;
       z-index: 1;
     }
 
+    /* Names — same line */
     .names-big {
       font-family: 'Dancing Script', cursive;
-      font-size: 44px;
+      font-size: 38px;
       color: var(--navy);
       line-height: 1.1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: nowrap;
+      margin-bottom: 4px;
     }
     .and-sym {
-      display: block;
-      font-size: 36px;
+      display: inline;
+      font-size: 28px;
       color: var(--gold);
-      margin: 8px 0;
+      margin: 0;
     }
 
+    /* Date */
     .cover-sub {
       font-size: 11px;
-      letter-spacing: 3px;
+      letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--slate);
-      margin-top: 10px;
-      margin-bottom: 28px;
+      margin-top: 8px;
+      margin-bottom: 22px;
     }
 
+    /* Gold rule */
+    .cover-rule {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 0 auto 22px;
+    }
+
+    /* Tap hint */
     .swipe-hint {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 1px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
       animation: bounce 1.8s infinite;
     }
-    .swipe-arrow { font-size: 20px; }
+    .swipe-arrow { font-size: 18px; }
 
     @keyframes bounce {
       0%,100% { transform: translateY(0); }
       50%      { transform: translateY(-6px); }
     }
 
-    /* ─── SHARED ELEMENTS ─── */
+    /* ─── SHARED ─── */
     .divider {
       width: 80px;
       height: 1px;
@@ -200,7 +219,6 @@
       text-align: center;
       background: linear-gradient(180deg, var(--cream2) 0%, var(--cream) 100%);
     }
-
     .invite-heading {
       font-family: 'Cormorant Garamond', serif;
       font-size: 11px;
@@ -208,7 +226,6 @@
       text-transform: uppercase;
       color: var(--gold);
     }
-
     .invite-para {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
@@ -217,7 +234,6 @@
       color: var(--text-mid);
       margin-bottom: 16px;
     }
-
     .bride-groom {
       font-family: 'Dancing Script', cursive;
       font-size: 46px;
@@ -229,7 +245,6 @@
       color: var(--gold);
       margin: 6px 0;
     }
-
     .calendar-btn {
       display: inline-block;
       margin-top: 20px;
@@ -244,7 +259,6 @@
       transition: background .2s;
     }
     .calendar-btn:hover { background: var(--gold); color: var(--navy); }
-
     .invite-footer {
       font-family: 'Cormorant Garamond', serif;
       font-size: 14px;
@@ -259,7 +273,6 @@
       padding: 28px 20px 36px;
       background: linear-gradient(180deg, var(--cream2) 0%, var(--cream) 100%);
     }
-
     .section-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: 11px;
@@ -269,7 +282,6 @@
       margin-bottom: 16px;
       text-align: center;
     }
-
     .event-card {
       width: 100%;
       background: #ffffff;
@@ -282,229 +294,111 @@
       gap: 16px;
       box-shadow: 0 2px 16px rgba(47, 74, 109, 0.08);
     }
-
     .event-icon {
-      width: 44px;
-      height: 44px;
-      min-width: 44px;
+      width: 44px; height: 44px; min-width: 44px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--dusty) 0%, var(--cream2) 100%);
       border: 1px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       font-size: 20px;
     }
-
     .event-name {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 19px;
-      color: var(--navy);
-      font-weight: 500;
+      font-size: 19px; color: var(--navy); font-weight: 500;
     }
-    .event-date {
-      font-size: 12px;
-      color: var(--gold);
-      margin-top: 2px;
-      letter-spacing: .5px;
-    }
-    .event-venue {
-      font-size: 12px;
-      color: var(--text-mid);
-      line-height: 1.6;
-      margin-top: 4px;
-    }
+    .event-date { font-size: 12px; color: var(--gold); margin-top: 2px; letter-spacing: .5px; }
+    .event-venue { font-size: 12px; color: var(--text-mid); line-height: 1.6; margin-top: 4px; }
     .event-time-badge {
       display: inline-block;
       background: linear-gradient(135deg, var(--navy) 0%, var(--slate) 100%);
       color: var(--cream2);
-      font-size: 11px;
-      letter-spacing: 1px;
-      padding: 3px 12px;
-      border-radius: 20px;
-      margin-top: 8px;
+      font-size: 11px; letter-spacing: 1px;
+      padding: 3px 12px; border-radius: 20px; margin-top: 8px;
     }
     .map-btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 9px 18px;
-      border-radius: 24px;
-      text-decoration: none;
-      background: var(--gold);
-      color: var(--navy);
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 700;
-      transition: background .2s;
+      display: inline-block; margin-top: 12px; padding: 9px 18px;
+      border-radius: 24px; text-decoration: none;
+      background: var(--gold); color: var(--navy);
+      font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
+      font-weight: 700; transition: background .2s;
     }
     .map-btn:hover { background: var(--navy); color: var(--cream2); }
 
     /* ─── COUNTDOWN ─── */
     #s-countdown {
-      padding: 32px 24px 40px;
-      text-align: center;
+      padding: 32px 24px 40px; text-align: center;
       background: linear-gradient(160deg, var(--navy) 0%, #1a3050 100%);
     }
-
     .cd-label {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 12px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 16px;
+      font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
     }
-    .cd-names {
-      font-family: 'Dancing Script', cursive;
-      font-size: 40px;
-      color: var(--cream2);
-    }
+    .cd-names { font-family: 'Dancing Script', cursive; font-size: 40px; color: var(--cream2); }
     .cd-date-text {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 14px;
-      color: var(--dusty);
-      margin-top: 8px;
-      margin-bottom: 28px;
-      letter-spacing: .5px;
+      font-size: 14px; color: var(--dusty);
+      margin-top: 8px; margin-bottom: 28px; letter-spacing: .5px;
     }
-
-    .cd-grid {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 28px;
-    }
+    .cd-grid { display: flex; gap: 10px; justify-content: center; margin-bottom: 28px; }
     .cd-box {
       background: rgba(255,255,255,0.07);
       border: 1px solid rgba(212,175,55,0.4);
-      border-radius: 12px;
-      width: 72px;
-      padding: 14px 8px 10px;
-      backdrop-filter: blur(6px);
+      border-radius: 12px; width: 72px;
+      padding: 14px 8px 10px; backdrop-filter: blur(6px);
     }
-    .cd-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36px;
-      color: var(--gold);
-    }
-    .cd-unit {
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--dusty);
-    }
-
+    .cd-num { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--gold); }
+    .cd-unit { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--dusty); }
     .cd-message {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 15px;
-      color: var(--peach);
-      line-height: 1.8;
-      max-width: 280px;
-      margin: 0 auto 24px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 15px; color: var(--peach); line-height: 1.8;
+      max-width: 280px; margin: 0 auto 24px;
     }
-
-    /* nav btns on dark bg */
-    #s-countdown .nav-btn {
-      border-color: rgba(212,175,55,0.5);
-      color: var(--cream2);
-    }
+    #s-countdown .nav-btn { border-color: rgba(212,175,55,0.5); color: var(--cream2); }
     #s-countdown .nav-btn:hover { border-color: var(--gold); color: var(--gold); }
-    #s-countdown .nav-btn.primary {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: var(--navy);
-    }
+    #s-countdown .nav-btn.primary { background: var(--gold); border-color: var(--gold); color: var(--navy); }
     #s-countdown .nav-btn.primary:hover { background: var(--cream2); }
 
     /* ─── CONTACT ─── */
     #s-rsvp {
-      padding: 32px 24px 40px;
-      text-align: center;
+      padding: 32px 24px 40px; text-align: center;
       background: linear-gradient(180deg, var(--cream2) 0%, var(--cream) 100%);
     }
-
-    .rsvp-title {
-      font-family: 'Dancing Script', cursive;
-      font-size: 40px;
-      color: var(--navy);
-    }
+    .rsvp-title { font-family: 'Dancing Script', cursive; font-size: 40px; color: var(--navy); }
     .rsvp-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 14px;
-      color: var(--slate);
-      margin-bottom: 20px;
+      font-family: 'Cormorant Garamond', serif; font-style: italic;
+      font-size: 14px; color: var(--slate); margin-bottom: 20px;
     }
-
     .rsvp-contact-card {
-      width: 100%;
-      background: #fff;
-      border: 1px solid var(--dusty);
-      border-left: 4px solid var(--gold);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-      text-align: left;
-      box-shadow: 0 2px 16px rgba(47,74,109,0.08);
+      width: 100%; background: #fff;
+      border: 1px solid var(--dusty); border-left: 4px solid var(--gold);
+      border-radius: 12px; padding: 20px; margin-bottom: 16px;
+      text-align: left; box-shadow: 0 2px 16px rgba(47,74,109,0.08);
     }
-    .rsvp-contact-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      color: var(--navy);
-    }
-    .rsvp-phone {
-      font-size: 14px;
-      color: var(--slate);
-      margin-top: 6px;
-    }
-
+    .rsvp-contact-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--navy); }
+    .rsvp-phone { font-size: 14px; color: var(--slate); margin-top: 6px; }
     .wa-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      background: var(--navy);
-      color: var(--cream2);
-      text-decoration: none;
-      font-size: 12px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 15px 28px;
-      border-radius: 32px;
-      width: 100%;
-      margin-top: 8px;
-      transition: background .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--navy); color: var(--cream2); text-decoration: none;
+      font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 15px 28px; border-radius: 32px; width: 100%;
+      margin-top: 8px; transition: background .2s;
     }
     .wa-btn:hover { background: var(--gold); color: var(--navy); }
 
     /* ─── BOTTOM NAV ─── */
     .bottom-nav {
-      position: fixed;
-      left: 0; bottom: 0;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background: var(--navy);
-      border-top: 2px solid var(--gold);
+      position: fixed; left: 0; bottom: 0; width: 100%;
+      display: flex; justify-content: space-around; align-items: center;
+      background: var(--navy); border-top: 2px solid var(--gold);
       padding: 10px 8px calc(12px + env(safe-area-inset-bottom));
       z-index: 9999;
     }
     .bnav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      background: none;
-      border: none;
-      color: var(--dusty);
-      font-size: 9px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: color .2s;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      background: none; border: none; color: var(--dusty);
+      font-size: 9px; letter-spacing: 1px; text-transform: uppercase;
+      cursor: pointer; transition: color .2s;
     }
     .bnav-item i { font-size: 20px; }
     .bnav-item.active { color: var(--gold); }
@@ -513,7 +407,6 @@
     /* ─── TRANSITIONS ─── */
     .slide-in-right { animation: slideInRight .35s ease; }
     .slide-in-left  { animation: slideInLeft  .35s ease; }
-
     @keyframes slideInRight {
       from { opacity:0; transform:translateX(40px); }
       to   { opacity:1; transform:translateX(0); }
@@ -531,25 +424,33 @@
   <!-- ══ COVER ══ -->
   <div class="screen active" id="s-cover" onclick="goTo(1,'right')">
 
-    <div class="cover-verse">
-      "The Lord has done great things for us,<br>
-      and we are filled with joy."
-      <span>— Psalms 126:3</span>
+    <!-- 1. Verse at top — no box -->
+    <div class="cover-verse-wrap">
+      <div class="cover-verse-text">
+        "The Lord has done great things for us,<br>
+        and we are filled with joy."
+      </div>
+      <span class="cover-verse-ref">— Psalms 126 : 3</span>
     </div>
 
+    <!-- 2. Monogram -->
     <div class="monogram-wrap">
       <img src="https://i.postimg.cc/CMGrMPX8/png1.png" class="monogram-decor">
       <div class="monogram-inner">T/L</div>
     </div>
 
+    <!-- 3. Names — same line -->
     <div class="names-big">
-      Tamil
-      <span class="and-sym">❤</span>
-      Lavina
+      Tamil <span class="and-sym">❤</span> Lavina
     </div>
 
+    <!-- 4. Date -->
     <div class="cover-sub">26 · June · 2026 · Chennai</div>
 
+    <!-- 5. Gold rule -->
+    <div class="cover-rule"></div>
+
+    <!-- 6. Tap hint -->
     <div class="swipe-hint">
       <div class="swipe-arrow">↑</div>
       Tap to open
@@ -559,7 +460,6 @@
 
   <!-- ══ INVITE ══ -->
   <div class="screen" id="s-invite">
-
     <div class="invite-heading">With joy, we invite you</div>
     <div class="divider"></div>
 
@@ -572,15 +472,14 @@
     <div class="bride-groom">Lavina</div>
 
     <p class="invite-para" style="margin-top:16px;">
-      Unite in marriage and step into a lifetime together.
-      We would love to have you beside us to celebrate this special day.
+      Unite in marriage and step into<br>
+      a lifetime together. We would love<br>
+      to have you beside us on this special day.
     </p>
 
     <a class="calendar-btn"
       href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20260626T040000Z%0ADTEND:20260626T100000Z%0ASUMMARY:Tamil%20%26%20Lavina%20Wedding%0ALOCATION:Chennai%0ADESCRIPTION:Wedding%20Celebration%0AEND:VEVENT%0AEND:VCALENDAR"
-      download="Tamil-Lavina-Wedding.ics">
-      ADD TO CALENDAR
-    </a>
+      download="Tamil-Lavina-Wedding.ics">ADD TO CALENDAR</a>
 
     <div class="divider"></div>
 
@@ -593,17 +492,13 @@
       <button class="nav-btn" onclick="goTo(0,'left')">← Back</button>
       <button class="nav-btn primary" onclick="goTo(2,'right')">View Events →</button>
     </div>
-
   </div>
 
   <!-- ══ EVENTS ══ -->
   <div class="screen" id="s-events">
-
     <div class="section-title">Wedding Events</div>
     <div class="divider"></div>
-
     <div style="width:100%;padding:0 20px;">
-
       <div class="event-card">
         <div class="event-icon">⛪</div>
         <div>
@@ -614,7 +509,6 @@
           <a class="map-btn" href="https://maps.app.goo.gl/k4VVhy4UE5Fbabwv8?g_st=iw" target="_blank">View Location</a>
         </div>
       </div>
-
       <div class="event-card">
         <div class="event-icon">🥂</div>
         <div>
@@ -625,89 +519,63 @@
           <a class="map-btn" href="https://maps.app.goo.gl/eZW6UiqjtVtQJhbK9?g_st=iw" target="_blank">View Location</a>
         </div>
       </div>
-
     </div>
-
     <div class="nav-btn-row">
       <button class="nav-btn" onclick="goTo(1,'left')">← Invite</button>
       <button class="nav-btn primary" onclick="goTo(3,'right')">Countdown →</button>
     </div>
-
   </div>
 
   <!-- ══ COUNTDOWN ══ -->
   <div class="screen" id="s-countdown">
-
     <div class="cd-label">Counting down to</div>
     <div class="cd-names">Tamil &amp; Lavina</div>
     <div class="cd-date-text">Friday, 26th June 2026 · Chennai</div>
-
     <div class="cd-grid">
       <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-unit">Days</div></div>
       <div class="cd-box"><div class="cd-num" id="cd-hrs">--</div><div class="cd-unit">Hours</div></div>
       <div class="cd-box"><div class="cd-num" id="cd-min">--</div><div class="cd-unit">Mins</div></div>
       <div class="cd-box"><div class="cd-num" id="cd-sec">--</div><div class="cd-unit">Secs</div></div>
     </div>
-
     <p class="cd-message">
       Our families are filled with joy that you can join us
       in celebrating one of the happiest days of our lives.
     </p>
-
     <div class="nav-btn-row">
       <button class="nav-btn" onclick="goTo(2,'left')">← Events</button>
       <button class="nav-btn primary" onclick="goTo(4,'right')">Contact →</button>
     </div>
-
   </div>
 
   <!-- ══ CONTACT ══ -->
   <div class="screen" id="s-rsvp">
-
     <div class="rsvp-title">Join Us</div>
     <div class="rsvp-sub">We'd love to celebrate with you!</div>
     <div class="divider"></div>
-
     <div class="rsvp-contact-card">
       <div class="rsvp-contact-name">Tamil &amp; Lavina's Family</div>
       <div class="rsvp-phone">📞 86829 02815</div>
     </div>
-
-    <a class="wa-btn" href="https://wa.me/918682902815">
-      CONTACT US ON WHATSAPP
-    </a>
-
+    <a class="wa-btn" href="https://wa.me/918682902815">CONTACT US ON WHATSAPP</a>
     <div class="nav-btn-row">
       <button class="nav-btn" onclick="goTo(3,'left')">← Countdown</button>
       <button class="nav-btn" onclick="goTo(0,'left')">Home</button>
     </div>
-
   </div>
 
   <!-- ══ BOTTOM NAV ══ -->
   <div class="bottom-nav">
-    <button class="bnav-item active" onclick="goTo(0,'left')">
-      <i class="ti ti-home"></i>Home
-    </button>
-    <button class="bnav-item" onclick="goTo(1,'right')">
-      <i class="ti ti-heart"></i>Invite
-    </button>
-    <button class="bnav-item" onclick="goTo(2,'right')">
-      <i class="ti ti-calendar-event"></i>Events
-    </button>
-    <button class="bnav-item" onclick="goTo(3,'right')">
-      <i class="ti ti-clock"></i>Countdown
-    </button>
-    <button class="bnav-item" onclick="goTo(4,'right')">
-      <i class="ti ti-message-circle"></i>Contact
-    </button>
+    <button class="bnav-item active" onclick="goTo(0,'left')"><i class="ti ti-home"></i>Home</button>
+    <button class="bnav-item" onclick="goTo(1,'right')"><i class="ti ti-heart"></i>Invite</button>
+    <button class="bnav-item" onclick="goTo(2,'right')"><i class="ti ti-calendar-event"></i>Events</button>
+    <button class="bnav-item" onclick="goTo(3,'right')"><i class="ti ti-clock"></i>Countdown</button>
+    <button class="bnav-item" onclick="goTo(4,'right')"><i class="ti ti-message-circle"></i>Contact</button>
   </div>
 
-</div><!-- /.invite-shell -->
+</div>
 
 <script>
   let current = 0;
-
   function goTo(n, dir) {
     const screens = document.querySelectorAll('.screen');
     screens[current].classList.remove('active');
