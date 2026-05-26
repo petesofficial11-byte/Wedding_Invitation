@@ -69,7 +69,6 @@
       cursor: pointer;
     }
 
-    /* Verse — top, no box */
     .cover-verse-wrap {
       margin: 0 auto 18px;
       max-width: 300px;
@@ -94,7 +93,6 @@
       text-transform: uppercase;
     }
 
-    /* Monogram */
     .monogram-wrap {
       position: relative;
       display: flex;
@@ -121,7 +119,6 @@
       z-index: 1;
     }
 
-    /* Names — same line */
     .names-big {
       font-family: 'Dancing Script', cursive;
       font-size: 38px;
@@ -141,7 +138,6 @@
       margin: 0;
     }
 
-    /* Date */
     .cover-sub {
       font-size: 11px;
       letter-spacing: 3.5px;
@@ -151,7 +147,6 @@
       margin-bottom: 22px;
     }
 
-    /* Gold rule */
     .cover-rule {
       width: 120px;
       height: 1px;
@@ -159,7 +154,6 @@
       margin: 0 auto 22px;
     }
 
-    /* Tap hint */
     .swipe-hint {
       display: flex;
       flex-direction: column;
@@ -359,6 +353,107 @@
     #s-countdown .nav-btn.primary { background: var(--gold); border-color: var(--gold); color: var(--navy); }
     #s-countdown .nav-btn.primary:hover { background: var(--cream2); }
 
+    /* ─── PHOTO LINK BOXES ─── */
+    .photo-links-wrap {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    /* Engagement card — always active */
+    .photo-link-card {
+      width: 100%;
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(212,175,55,0.45);
+      cursor: pointer;
+    }
+    .photo-link-card:hover {
+      opacity: .85;
+      transform: translateY(-1px);
+    }
+    .photo-link-icon {
+      width: 46px; height: 46px; min-width: 46px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      background: rgba(212,175,55,0.18);
+      border: 1px solid rgba(212,175,55,0.5);
+    }
+    .photo-link-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; font-weight: 500;
+      color: var(--cream2);
+      letter-spacing: .3px;
+    }
+    .photo-link-sub {
+      font-size: 11px;
+      color: var(--dusty);
+      margin-top: 3px;
+      letter-spacing: .4px;
+    }
+    .photo-link-arrow {
+      margin-left: auto;
+      font-size: 18px;
+      color: var(--gold);
+      opacity: .8;
+    }
+
+    /* Wedding upload card — locked until event */
+    .photo-link-card.locked {
+      opacity: .55;
+      cursor: not-allowed;
+      border-color: rgba(167,182,198,0.35);
+      background: rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
+    .photo-link-card.locked .photo-link-icon {
+      background: rgba(167,182,198,0.15);
+      border-color: rgba(167,182,198,0.4);
+    }
+    .photo-link-card.locked .photo-link-title { color: var(--dusty); }
+    .photo-link-card.locked .photo-link-arrow { color: var(--dusty); }
+
+    .lock-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(167,182,198,0.20);
+      border: 1px solid rgba(167,182,198,0.35);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--dusty);
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+    .lock-badge i { font-size: 11px; }
+
+    .open-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(212,175,55,0.18);
+      border: 1px solid rgba(212,175,55,0.45);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+    .open-badge i { font-size: 11px; }
+
     /* ─── CONTACT ─── */
     #s-rsvp {
       padding: 32px 24px 40px; text-align: center;
@@ -424,7 +519,6 @@
   <!-- ══ COVER ══ -->
   <div class="screen active" id="s-cover" onclick="goTo(1,'right')">
 
-    <!-- 1. Verse at top — no box -->
     <div class="cover-verse-wrap">
       <div class="cover-verse-text">
         "The Lord has done great things for us,<br>
@@ -433,24 +527,19 @@
       <span class="cover-verse-ref">— Psalms 126 : 3</span>
     </div>
 
-    <!-- 2. Monogram -->
     <div class="monogram-wrap">
       <img src="https://i.postimg.cc/CMGrMPX8/png1.png" class="monogram-decor">
       <div class="monogram-inner">T L</div>
     </div>
 
-    <!-- 3. Names — same line -->
     <div class="names-big">
       Tamil <span class="and-sym">❤</span> Lavina
     </div>
 
-    <!-- 4. Date -->
     <div class="cover-sub">26 · June · 2026 · Chennai</div>
 
-    <!-- 5. Gold rule -->
     <div class="cover-rule"></div>
 
-    <!-- 6. Tap hint -->
     <div class="swipe-hint">
       <div class="swipe-arrow">↑</div>
       Tap to open
@@ -541,6 +630,39 @@
       Our families are filled with joy that you can join us
       in celebrating one of the happiest days of our lives.
     </p>
+
+    <!-- ── PHOTO LINK BOXES ── -->
+    <div class="photo-links-wrap">
+
+      <!-- Engagement Photos — always accessible -->
+      <a class="photo-link-card" href="https://engagement.tamillavina.in" target="_blank">
+        <div class="photo-link-icon">📸</div>
+        <div style="text-align:left;">
+          <div class="photo-link-title">Engagement Photos</div>
+          <div class="photo-link-sub">28th February 2026 · Our beautiful day</div>
+          <div class="open-badge"><i class="ti ti-photo"></i> View Gallery</div>
+        </div>
+        <div class="photo-link-arrow"><i class="ti ti-arrow-right"></i></div>
+      </a>
+
+      <!-- Wedding Upload — locked until 26 Jun 2026 9:30 AM IST -->
+      <a class="photo-link-card locked" id="wedding-upload-card"
+         href="https://photo.tamillavina.in" target="_blank">
+        <div class="photo-link-icon">🎊</div>
+        <div style="text-align:left;">
+          <div class="photo-link-title">Upload Wedding Photos</div>
+          <div class="photo-link-sub">Share your memories with us!</div>
+          <div class="lock-badge" id="upload-badge">
+            <i class="ti ti-lock"></i>
+            <span id="upload-badge-text">Opens on 26 Jun · 9:30 AM</span>
+          </div>
+        </div>
+        <div class="photo-link-arrow"><i class="ti ti-lock" id="upload-arrow-icon"></i></div>
+      </a>
+
+    </div>
+    <!-- ── END PHOTO LINK BOXES ── -->
+
     <div class="nav-btn-row">
       <button class="nav-btn" onclick="goTo(2,'left')">← Events</button>
       <button class="nav-btn primary" onclick="goTo(4,'right')">Contact →</button>
@@ -590,7 +712,13 @@
     const target = new Date('2026-06-26T09:30:00+05:30');
     const now    = new Date();
     let diff     = target - now;
-    if (diff < 0) return;
+    if (diff < 0) {
+      document.getElementById('cd-days').textContent = '0';
+      document.getElementById('cd-hrs').textContent  = '00';
+      document.getElementById('cd-min').textContent  = '00';
+      document.getElementById('cd-sec').textContent  = '00';
+      return;
+    }
     const days = Math.floor(diff / 86400000); diff -= days * 86400000;
     const hrs  = Math.floor(diff / 3600000);  diff -= hrs  * 3600000;
     const min  = Math.floor(diff / 60000);    diff -= min  * 60000;
@@ -602,6 +730,40 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  /* ── Wedding upload lock/unlock ── */
+  function checkUploadAccess() {
+    const weddingStart = new Date('2026-06-26T09:30:00+05:30');
+    const now          = new Date();
+    const card         = document.getElementById('wedding-upload-card');
+    const badge        = document.getElementById('upload-badge');
+    const badgeText    = document.getElementById('upload-badge-text');
+    const arrowIcon    = document.getElementById('upload-arrow-icon');
+
+    if (now >= weddingStart) {
+      /* UNLOCKED */
+      card.classList.remove('locked');
+      card.style.pointerEvents = '';
+      badge.className = 'open-badge';
+      badge.innerHTML = '<i class="ti ti-upload"></i> <span>Upload Now</span>';
+      arrowIcon.className = 'ti ti-arrow-right';
+    } else {
+      /* Still locked — update badge text with time remaining */
+      const diff = weddingStart - now;
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000)  / 60000);
+      if (d > 0) {
+        badgeText.textContent = 'Opens in ' + d + 'd ' + h + 'h';
+      } else if (h > 0) {
+        badgeText.textContent = 'Opens in ' + h + 'h ' + m + 'm';
+      } else {
+        badgeText.textContent = 'Opens very soon!';
+      }
+    }
+  }
+  checkUploadAccess();
+  setInterval(checkUploadAccess, 30000);
 </script>
 
 </body>
